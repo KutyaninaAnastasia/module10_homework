@@ -8,7 +8,6 @@ body {
     background: url(../img/space_bg.jpeg) no-repeat center;
     background-size: cover;
     display: flex;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
     height: 100vh;

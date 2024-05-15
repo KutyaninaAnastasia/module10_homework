@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+*{
+    font-family: "Space Mono", monospace;
+}
+
+body {
+    background: url(../img/space_bg.jpeg) no-repeat center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.nav{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size: 1rem;
+    line-height: 2;
+    text-transform: uppercase;
+    height: max-content;
+    margin-bottom: 20px;
+}
+
+.nav ul{
+    padding: 0;
+}
+
+.nav li{
+    list-style-type: none;
+}
+
+.nav__point {
+    position:relative;
+    display: block;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+}
+
+.nav__point.active {
+    font-weight: bold;
+    text-shadow: 0 0 10px rgb(2 156 252),
+                 0 0 20px rgb(0 231 250),
+                 0 0 30px rgb(190 252 252);
+}
+
+.nav__point i {
+    display: none;
+}
+
+.nav__point:hover i { 
+    display: block;
+    position: absolute;
+    top: 0.5rem; 
+    left: -2rem;
+}
+
+.wrapper{
+    border-radius: 5px;
+    background: #fefefeab;
+    padding: 20px;
+    display: grid;
+    gap: 20px;
+    align-items: center;
+    box-shadow: 0px 0px 7px 5px #fefefeab;
+    justify-items: center;
+}
+
+.wrapper__title {
+    font-weight: 700;
+    font-size: 25px;
+}
+
+.btn {
+    display: flex;
+    cursor: pointer;
+    padding: 12px 12px;
+    border-radius: 5px;
+    color: white;
+    background: #315efb;
+    box-shadow: 0px 0px 7px 5px #fefefe52;
+    border: none;
+    transition: 0.3s;
+    align-items: center;
+    gap: 7px;
+}
+  
+.btn:hover {
+    background-color: #0873e6;
+}
+  
+.btn__icon {
+    max-height: 16px;
+}
+
+/* Styles for task 3 */
+
+.chat-box {
+    display: flex;
+    flex-direction: column;
+    width: 21rem;
+    max-width: 95%;
+    height: 300px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow-y: scroll;
+    padding: 10px 5px 10px 10px;
+    background-color: #f5f5f5;
+}
+
+.message {
+    margin-bottom: 10px;
+    padding: 8px 15px;
+    border-radius: 15px;
+    max-width: 70%;
+    word-wrap: break-word;
+}
+
+.user-message {
+    background-color: #83edf2;
+    align-self: flex-end;
+    border-bottom-right-radius: 0 0;
+}
+
+.echo-message {
+    background-color: #E5E5EA;
+    align-self: flex-start;
+    border-bottom-left-radius: 0 0;
+}
+
+input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.chat-msg-block{
+    display: grid;
+    gap: 5px;
+    grid-template-columns: 5fr 1fr 0.5fr;
+    width: 100%;
+}
+
+.chat-msg-block__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}

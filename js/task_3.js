@@ -2,7 +2,16 @@ const chatBox = document.getElementById('chat-box');
 const messageInput = document.querySelector('.chat-msg-block__input');
 const sendButton = document.getElementById('send-btn');
 const locationButton = document.getElementById('location-btn');
-const socket = 'wss://echo-ws-service.herokuapp.com'
+const socket = new WebSocket('wss://echo-ws-service.herokuapp.com');
+
+socket.onerror = function(error) {
+    writeToChat(error);
+    console.error('Error:', error);
+};
+
+socket.onmessage = function(event) {
+    addMessageToChat(`${event.data}`, 'echo');
+};
 
 function addMessageToChat(message, messageType) {
     const messageElement = document.createElement('div');
@@ -21,18 +30,7 @@ function sendMessage() {
     const message = messageInput.value;
     if (message !== '') {
         addMessageToChat(`${message}`, 'user');
-        const ws = new WebSocket(socket);
-        ws.onopen = function() {
-            ws.send(message);
-        };
-        ws.onerror = function (error) {
-            writeToChat(error);
-            console.error('Error:', error);
-        };
-        ws.onmessage = function(event) {
-            addMessageToChat(`${event.data}`, 'echo');
-            ws.close();
-        };
+        socket.send(message);
         messageInput.value = '';
     }
 }
@@ -70,4 +68,8 @@ locationButton.addEventListener('click', () => {
         addMessageToChat('Location determination…', 'echo');
         navigator.geolocation.getCurrentPosition(success, error);
       }
+});
+
+window.addEventListener('beforeunload', () => {
+    socket.close();
 });
